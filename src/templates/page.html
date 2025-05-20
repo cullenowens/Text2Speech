@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>Text2Speech!</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
     </head>
     <body>
         <h1>Welcome to Text2Speech!</h1>
-        <h2>Choose a document to read:</h2>
+        <h2>Choose a document from your files to start!</h2>
         <form action='http://localhost:5000/upload' method='POST' enctype='multipart/form-data'>
             <input type='file' name='file' accept='.txt, .docx' required>
             <input type='submit' value='Upload'>

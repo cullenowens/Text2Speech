@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
 from docx import Document
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route('/')
+def home():
+    return render_template('page.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -25,3 +29,7 @@ def upload_file():
     else:
         return jsonify({'error': 'Unsupported file type'}), 400
     return jsonify({'content': content})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+# app.py

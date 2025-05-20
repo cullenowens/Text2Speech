@@ -8,7 +8,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
 def home():
-    return render_template('page.html')
+    return render_template('templates/page.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():

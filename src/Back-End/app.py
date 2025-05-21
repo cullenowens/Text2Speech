@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify, render_template
 import os
 from docx import Document
 
-app = Flask(__name__)
+app = Flask(__name__,
+            template_folder=os.path.join(os.pardir, 'templates'),
+            static_folder=os.path.join(os.pardir, 'static'))
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 

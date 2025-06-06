@@ -33,13 +33,28 @@ input[type="file"] {
   color: white;
   border: none;
   padding: 12px 20px;
-  font-size: 10px;
+  font-size: 15px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #upload-btn:hover {
+  background-color: #ff1493;
+}
+
+.file-label {
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
   background-color: #ff1493;
 }
 

@@ -17,6 +17,7 @@ h2 {
 form {
   background-color: white;
   padding: 20px;
+  border: 2px dashed #fff;
   border-radius: 10px;
   display: inline-block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -24,6 +25,22 @@ form {
 
 input[type="file"] {
   margin-bottom: 10px;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#upload-btn {
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#upload-btn:hover {
+  background-color: #ff1493;
 }
 
 button {

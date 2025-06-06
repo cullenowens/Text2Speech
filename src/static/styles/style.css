@@ -16,13 +16,13 @@ h2 {
 }
 form {
   background-color: white;
-  padding: 50px;
+  padding: 20px;
   border: 2px dashed #fff;
   border-radius: 10px;
   display: inline-block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 input[type="file"] {

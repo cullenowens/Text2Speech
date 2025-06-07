@@ -8,26 +8,29 @@
         <h1>Welcome to Text2Speech!</h1>
         <h2>Choose a document from your files to start!</h2>
         <form action='http://localhost:5000/upload' method='POST' enctype='multipart/form-data'>
-            <input type='file' id='file' name='file' accept='.txt, .docx' required hidden>
-            <label for='file' class='file-label'>Choose a file</label>
-            <!--voice selection -->
-            <label for='voice'>Select Voice:</label>
-            <select name="voice" id="voice">
-                <option value="female">Female</option>
-                <option value="Male">Male</option>
-            </select>
+            <div class="button-container">
+                <input type='file' id='file' name='file' accept='.txt, .docx' required hidden>
+                <label for='file' class='file-label'>Choose a file</label>
+                <input type='submit' value='Upload' id="upload-btn">
+            </div>
 
-            <!--Speed control-->
-            <label for="rate">Select Rate:</label>
-            <select name="rate" id="speed">
-                <option value="50">0.5x</option>
-                <option value="100" selected>1.0x</option>
-                <option value="150">1.5x</option>
-                <option value="200">2.0x</option>
-            </select>
-            <span id="rate-display">1.0x</span>
-            
-            <input type='submit' value='Upload' id="upload-btn">
+            <div class="control-group">
+                <!--voice selection -->
+                <label for='voice'>Select Voice:</label>
+                <select name="voice" id="voice">
+                    <option value="female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+
+                <!--Speed control-->
+                <label for="rate">Select Rate:</label>
+                <select name="rate" id="speed">
+                    <option value="50">0.5x</option>
+                    <option value="100" selected>1.0x</option>
+                    <option value="150">1.5x</option>
+                    <option value="200">2.0x</option>
+                </select>
+            </div>
         </form>
 
         <script>

@@ -24,7 +24,7 @@ form {
   width: 300px;
   height: 100px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 50px;
 }
 
 input[type="file"] {

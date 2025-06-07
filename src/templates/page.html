@@ -24,7 +24,7 @@
 
                 <!--Speed control-->
                 <label for="rate">Rate:</label>
-                <select name="rate" id="speed">
+                <select name="rate" id="rate">
                     <option value="50">0.5x</option>
                     <option value="100" selected>1.0x</option>
                     <option value="150">1.5x</option>
@@ -48,7 +48,7 @@
                 }
             });
 
-            const rateSelect = document.getElementById("speed");
+            const rateSelect = document.getElementById("rate");
             const rateDisplay = document.getElementById("rate-display");
             rateSelect.addEventListener("input", function() {
 

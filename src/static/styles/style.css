@@ -57,6 +57,27 @@ input[type="file"] {
   transition: background-color 0.3s ease;
 }
 
+/* Add styles for the #voice element or remove the ruleset */
+#voice {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+}
+
+#rate {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+}
+
 .file-label:hover {
   background-color: #ff1493;
 }

@@ -56,7 +56,7 @@ def upload_file():
     else:
         return jsonify({'error': 'Unsupported file type'}), 400
 
-    return jsonify({'content': content})
+    return render_template('page.html', content=content, filename=filename)
 
 
 if __name__ == '__main__':

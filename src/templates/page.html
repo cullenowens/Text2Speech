@@ -64,7 +64,19 @@
             })
         </script>
 
-        
+        <form action="/generate_audio" method="POST">
+            <textarea name="text" id="text" rows="10" cols="50" placeholder="Generated text will appear here..." readonly>{{ content }}</textarea>
+            <br>
+            <button type="submit">Generate Audio</button>
+        </form>
+
+        {% if audio_file %}
+        <h3>Generated Audio:</h3>
+        <audio controls>
+            <source src="{{ url_for('static', filename='audio/' + audio_file) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        {% endif %}
 
        
     </body>

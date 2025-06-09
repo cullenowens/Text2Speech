@@ -58,6 +58,19 @@ def upload_file():
 
     return render_template('page.html', content=content, filename=filename)
 
+@app.route('/generate_audio', methods=['POST'])
+def generate_audio():
+    text = request.form.get('text')
+    if not text:
+        return jsonify({'error': 'No text provided'}), 400
+    engine = pyttsx3.init()
+    audio_filename = 'output.mp3'
+    AUDIO_FOLDER = 'static/audio'
+    audio_path = os.path.join(AUDIO_FOLDER, 'output.mp3')
+    engine.save_to_file(text, audio_path)
+    engine.runAndWait()
+
+    return render_template('page.html', audio_path='audio/output.mp3', text=text)
 
 if __name__ == '__main__':
     app.run(debug=True)

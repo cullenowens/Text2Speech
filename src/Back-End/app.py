@@ -37,7 +37,7 @@ class TextToSpeech:
 def home():
     return render_template('page.html')
 
-@app.route('/upload', methods=['POST'])
+@app.route('/uploads', methods=['POST'])
 def upload_file():
     uploaded_file = request.files.get('file')
     if not uploaded_file:

@@ -64,13 +64,15 @@ def generate_audio():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
     engine = pyttsx3.init()
-    audio_filename = 'output.mp3'
     AUDIO_FOLDER = 'static/audio'
+    os.makedirs(AUDIO_FOLDER, exist_ok=True)
+
+    audio_filename = 'output.mp3'
     audio_path = os.path.join(AUDIO_FOLDER, 'output.mp3')
     engine.save_to_file(text, audio_path)
     engine.runAndWait()
 
-    return render_template('page.html', audio_path='audio/output.mp3', text=text)
+    return render_template('page.html', audio_path='audio/{audio_filename}', text=text)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -68,4 +68,5 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(debug=True)
+#runtime loop errors when audio is attempting to be generated
 # app.py

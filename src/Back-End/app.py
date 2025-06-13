@@ -43,6 +43,8 @@ def upload_file():
     if not uploaded_file:
         return jsonify({'error': 'No file provided'}), 400
     
+    voice = request.form.get('voice', 'female').lower()
+    rate = int(request.form.get('rate', 150))
     filename = uploaded_file.filename
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     uploaded_file.save(filepath)
@@ -56,24 +58,13 @@ def upload_file():
     else:
         return jsonify({'error': 'Unsupported file type'}), 400
 
-    return render_template('page.html', content=content, filename=filename)
+    tts = TextToSpeech()
+    tts.set_voice(voice)
+    tts.set_rate(rate)
+    audio_path = tts.generate_audio(content)
 
-@app.route('/generate_audio', methods=['POST'])
-def generate_audio():
-    text = request.form.get('text')
-    if not text:
-        return jsonify({'error': 'No text provided'}), 400
-    engine = pyttsx3.init()
-    AUDIO_FOLDER = 'static/audio'
-    os.makedirs(AUDIO_FOLDER, exist_ok=True)
-
-    audio_filename = 'output.mp3'
-    audio_path = os.path.join(AUDIO_FOLDER, 'output.mp3')
-    engine.save_to_file(text, audio_path)
-    engine.runAndWait()
-
-    return render_template('page.html', audio_path=f'audio/{audio_filename}', text=text)
-
+    audio_url = audio_path.replace('static/', '')
+    return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -66,7 +66,7 @@ def upload_file():
     audio_path = tts.generate_audio(content)
 
     audio_url = audio_path.replace('frontend/static/', '')
-    return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
+    return render_template('frontend/page.html', content=content, audio_file=True, audio_path=audio_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,91 @@
+/*styling the page*/
+
+body {
+    background-color: pink;
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #fff;
+}
+
+h2 {
+    color: #fff;
+}
+form {
+  background-color: white;
+  padding: 20px;
+  border: 2px dashed #fff;
+  border-radius: 10px;
+  display: table;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+  font-family: 'Fredoka', sans-serif;
+}
+
+#upload-btn {
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#upload-btn:hover {
+  background-color: #ff1493;
+}
+
+.file-label {
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Add styles for the #voice element or remove the ruleset */
+#voice {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+#rate {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 15px;
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+}
+
+.file-label:hover {
+  background-color: #ff1493;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}

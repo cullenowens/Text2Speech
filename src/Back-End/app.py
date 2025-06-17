@@ -48,6 +48,7 @@ def upload_file():
     filename = uploaded_file.filename
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     uploaded_file.save(filepath)
+    print(f" [DEBUG] File saved to {filepath}")
 
     if filename.endswith('.txt'):
         with open(filepath, 'r', encoding='utf-8') as file:
@@ -61,9 +62,10 @@ def upload_file():
     tts = TextToSpeech()
     tts.set_voice(voice)
     tts.set_rate(rate)
+    print(f" [DEBUG] Generating audio with voice: {voice}, rate: {rate}")
     audio_path = tts.generate_audio(content)
 
-    audio_url = audio_path.replace('static/', '')
+    audio_url = audio_path.replace('frontend/static/', '')
     return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
 
 if __name__ == '__main__':

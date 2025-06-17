@@ -4,14 +4,14 @@ from docx import Document
 import pyttsx3
 
 app = Flask(__name__,
-            template_folder=os.path.join(os.pardir, 'templates'),
+            template_folder=os.path.join(os.pardir, 'frontend', 'templates'),
             static_folder=os.path.join(os.pardir, 'static'))
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 #TTS Class
 class TextToSpeech:
-    def __init__(self, output_dir='frontend/static/audio', filename='output.mp3'):
+    def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
         self.engine = pyttsx3.init()
         self.output_dir = output_dir
         self.filename = filename
@@ -35,7 +35,7 @@ class TextToSpeech:
 
 @app.route('/')
 def home():
-    return render_template('frontend/page.html')
+    return render_template('page.html')
 
 @app.route('/uploads', methods=['POST'])
 def upload_file():
@@ -65,8 +65,9 @@ def upload_file():
     print(f" [DEBUG] Generating audio with voice: {voice}, rate: {rate}")
     audio_path = tts.generate_audio(content)
 
-    audio_url = audio_path.replace('frontend/static/', '')
-    return render_template('frontend/page.html', content=content, audio_file=True, audio_path=audio_url)
+    audio_url = os.path.join('audio', os.path.basename(audio_path))
+    print(f" [DEBUG] Audio generated at {audio_url}")
+    return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

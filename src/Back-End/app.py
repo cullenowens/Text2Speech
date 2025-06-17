@@ -35,7 +35,7 @@ class TextToSpeech:
 
 @app.route('/')
 def home():
-    return render_template('page.html')
+    return render_template('frontend/page.html')
 
 @app.route('/uploads', methods=['POST'])
 def upload_file():

@@ -15,6 +15,7 @@ class TextToSpeech:
         self.engine = pyttsx3.init()
         self.output_dir = output_dir
         self.filename = filename
+        print(f"[DEBUG] Filename: {self.filename}")
         os.makedirs(self.output_dir, exist_ok=True)
     
     def set_voice(self, gender='male'):
@@ -33,6 +34,7 @@ class TextToSpeech:
         print(f"[DEBUG] Saving audio to: {audio_path}")
         self.engine.save_to_file(text, audio_path)
         self.engine.runAndWait()
+        print(f"[DEBUG] Saving audio to: {os.path.abspath(audio_path)}")
         if not os.path.exists(audio_path):
             print("[ERROR] Audio file was not created.")
         return audio_path

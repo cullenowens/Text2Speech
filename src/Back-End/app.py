@@ -28,9 +28,13 @@ class TextToSpeech:
         self.engine.setProperty('rate', rate)
     
     def generate_audio(self, text):
+        self.engine = pyttsx3.init()  # Reinitialize to reset properties
         audio_path = os.path.join(self.output_dir, self.filename)
+        print(f"[DEBUG] Saving audio to: {audio_path}")
         self.engine.save_to_file(text, audio_path)
         self.engine.runAndWait()
+        if not os.path.exists(audio_path):
+            print("[ERROR] Audio file was not created.")
         return audio_path
 
 @app.route('/')

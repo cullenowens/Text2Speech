@@ -10,33 +10,22 @@ UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 #TTS Class
+
+from gtts import gTTS
+
 class TextToSpeech:
     def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
-        self.engine = pyttsx3.init()
         self.output_dir = output_dir
         self.filename = filename
         print(f"[DEBUG] Filename: {self.filename}")
         os.makedirs(self.output_dir, exist_ok=True)
     
-    def set_voice(self, gender='male'):
-        voices = self.engine.getProperty('voices')
-        for voice in voices:
-            if gender in voice.name.lower():
-                self.engine.setProperty('voice', voice.id)
-                break
-    
-    def set_rate(self, rate=150):
-        self.engine.setProperty('rate', rate)
-    
-    def generate_audio(self, text):
-        self.engine = pyttsx3.init()  # Reinitialize to reset properties
+    def generate_audio(self, text, lang='en'):
         audio_path = os.path.join(self.output_dir, self.filename)
+        tts = gTTS(text=text, lang=lang)
         print(f"[DEBUG] Saving audio to: {audio_path}")
-        self.engine.save_to_file(text, audio_path)
-        self.engine.runAndWait()
+        tts.save(audio_path)
         print(f"[DEBUG] Saving audio to: {os.path.abspath(audio_path)}")
-        if not os.path.exists(audio_path):
-            print("[ERROR] Audio file was not created.")
         return audio_path
 
 @app.route('/')

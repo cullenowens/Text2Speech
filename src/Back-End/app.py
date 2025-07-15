@@ -25,6 +25,11 @@ class TextToSpeech:
         tts = gTTS(text=text, lang=lang)
         print(f"[DEBUG] Saving audio to: {audio_path}")
         tts.save(audio_path)
+        if not os.path.exists(audio_path):
+            print(f"[ERROR] Audio file not created at {audio_path}")
+        else:
+            print(f"[DEBUG] Audio file created successfully at {audio_path}")
+        # Ensure the audio file is saved correctly
         print(f"[DEBUG] Saving audio to: {os.path.abspath(audio_path)}")
         return audio_path
 
@@ -37,9 +42,7 @@ def upload_file():
     uploaded_file = request.files.get('file')
     if not uploaded_file:
         return jsonify({'error': 'No file provided'}), 400
-    
-    voice = request.form.get('voice', 'female').lower()
-    rate = int(request.form.get('rate', 150))
+
     filename = uploaded_file.filename
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     uploaded_file.save(filepath)
@@ -55,7 +58,6 @@ def upload_file():
         return jsonify({'error': 'Unsupported file type'}), 400
 
     tts = TextToSpeech()
-    print(f" [DEBUG] Generating audio with voice: {voice}, rate: {rate}")
     audio_path = tts.generate_audio(content)
 
     audio_url = os.path.join('audio', os.path.basename(audio_path))

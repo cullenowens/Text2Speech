@@ -55,8 +55,6 @@ def upload_file():
         return jsonify({'error': 'Unsupported file type'}), 400
 
     tts = TextToSpeech()
-    tts.set_voice(voice)
-    tts.set_rate(rate)
     print(f" [DEBUG] Generating audio with voice: {voice}, rate: {rate}")
     audio_path = tts.generate_audio(content)
 

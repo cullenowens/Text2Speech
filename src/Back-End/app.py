@@ -4,8 +4,10 @@ from docx import Document
 import pyttsx3
 
 app = Flask(__name__,
-            template_folder=os.path.join(os.pardir, 'frontend', 'templates'),
-            static_folder=os.path.join(os.pardir, 'static'))
+            #template_folder=os.path.join(os.pardir, 'frontend', 'templates'),
+            template_folder=os.path.join('frontend', 'templates'),
+            #static_folder=os.path.join(os.pardir, 'static'))
+            static_folder=os.path.join('static'))
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -14,8 +16,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 from gtts import gTTS
 
 class TextToSpeech:
-    def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
-        self.output_dir = output_dir
+    #def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
+    def __init__(self, output_dir=os.path.join('static', 'audio'), filename='output.mp3'):
+        #self.output_dir = output_dir
+        self.output_dir = os.path.join('static', 'audio')
         self.filename = filename
         print(f"[DEBUG] Filename: {self.filename}")
         os.makedirs(self.output_dir, exist_ok=True)

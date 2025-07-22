@@ -15,8 +15,7 @@ from gtts import gTTS
 
 class TextToSpeech:
     def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
-        #self.output_dir = output_dir
-        self.output_dir = os.path.abspath(os.path.dirname(__file__)),
+        self.output_dir = output_dir
         print(f"[DEBUG] Output directory: {self.output_dir}")
         self.filename = filename
         print(f"[DEBUG] Filename: {self.filename}")

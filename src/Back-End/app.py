@@ -17,7 +17,6 @@ from gtts import gTTS
 
 class TextToSpeech:
     def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
-    #def __init__(self, output_dir=os.path.join('static', 'audio'), filename='output.mp3'):
         self.output_dir = output_dir
         #self.output_dir = os.path.join('static', 'audio')
         self.filename = filename
@@ -35,7 +34,7 @@ class TextToSpeech:
             print(f"[DEBUG] Audio file created successfully at {audio_path}")
         # Ensure the audio file is saved correctly
         print(f"[DEBUG] Saving audio to: {os.path.abspath(audio_path)}")
-        return audio_path
+        return os.path.join('audio', self.filename)
 
 @app.route('/')
 def home():

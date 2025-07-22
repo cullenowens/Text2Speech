@@ -5,9 +5,7 @@ import pyttsx3
 
 app = Flask(__name__,
             template_folder=os.path.join(os.pardir, 'frontend', 'templates'),
-            #template_folder=os.path.join('frontend', 'templates'),
             static_folder=os.path.join(os.pardir, 'static'))
-            #static_folder=os.path.join('static'))
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -64,7 +62,9 @@ def upload_file():
     audio_path = tts.generate_audio(content)
 
     audio_url = os.path.join('audio', os.path.basename(audio_path))
-    print(f" [DEBUG] Audio generated at {audio_url}")
+    full_path = os.path.join(os.pardir, 'static', 'audio', 'output.mp3')
+    print(f"[DEBUG] Full static file path: {os.path.abspath(full_path)}")
+    print(f"[DEBUG] File exists? {os.path.exists(full_path)}")
     return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
 
 if __name__ == '__main__':

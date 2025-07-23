@@ -3,11 +3,15 @@ import os
 from docx import Document
 import pyttsx3
 
+basedir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+
 app = Flask(__name__,
             template_folder=os.path.join(os.pardir, 'frontend', 'templates'),
-            static_folder=os.path.join(os.pardir, 'static'))
+            #static_folder=os.path.join(os.pardir, 'static'))
+            static_folder=os.path.join(basedir, 'static'))
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+print("Resolved STATIC FOLDER:", app.static_folder)
 
 #TTS Class
 

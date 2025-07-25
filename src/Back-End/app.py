@@ -18,7 +18,7 @@ print("Resolved STATIC FOLDER:", app.static_folder)
 from gtts import gTTS
 
 class TextToSpeech:
-    def __init__(self, output_dir=os.path.join(os.pardir, 'static', 'audio'), filename='output.mp3'):
+    def __init__(self, output_dir=os.path.join(os.pardir, 'src', 'static', 'audio'), filename='output.mp3'):
         self.output_dir = output_dir
         print(f"[DEBUG] Output directory: {self.output_dir}")
         self.filename = filename
@@ -26,7 +26,7 @@ class TextToSpeech:
         os.makedirs(self.output_dir, exist_ok=True)
     
     def generate_audio(self, text, lang='en'):
-        audio_path = os.path.join('src', self.output_dir, self.filename)
+        audio_path = os.path.join(self.output_dir, self.filename)
         tts = gTTS(text=text, lang=lang)
         print(f"[DEBUG] Saving audio to: {audio_path}")
         tts.save(audio_path)

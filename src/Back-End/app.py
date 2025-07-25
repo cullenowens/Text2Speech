@@ -26,7 +26,7 @@ class TextToSpeech:
         os.makedirs(self.output_dir, exist_ok=True)
     
     def generate_audio(self, text, lang='en'):
-        audio_path = os.path.join(self.output_dir, self.filename)
+        audio_path = os.path.join('src', self.output_dir, self.filename)
         tts = gTTS(text=text, lang=lang)
         print(f"[DEBUG] Saving audio to: {audio_path}")
         tts.save(audio_path)
@@ -43,6 +43,7 @@ def home():
     return render_template('page.html')
 
 @app.route('/uploads', methods=['POST'])
+#fix where file is uploaded
 def upload_file():
     uploaded_file = request.files.get('file')
     if not uploaded_file:

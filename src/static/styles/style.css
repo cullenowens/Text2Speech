@@ -57,7 +57,7 @@ input[type="file"] {
   transition: background-color 0.3s ease;
 }
 
-/* Add styles for the #voice element or remove the ruleset */
+/* Add styles for the #voice element */
 #voice {
   font-family: 'Fredoka', sans-serif;
   font-size: 15px;
@@ -90,7 +90,7 @@ input[type="file"] {
   margin-bottom: 15px;
 }
 
-.text_box {
+.text-box {
   white-space: pre-wrap;
   background-color: white;
   border: 1px solid #ccc;

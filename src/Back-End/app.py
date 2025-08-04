@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
 import os
 from docx import Document
+from datetime import datetime
 import pyttsx3
 
 basedir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -70,7 +71,7 @@ def upload_file():
     full_path = os.path.join(os.pardir, 'static', 'audio', 'output.mp3')
     print(f"[DEBUG] Full static file path: {os.path.abspath(full_path)}")
     print(f"[DEBUG] File exists? {os.path.exists(full_path)}")
-    return render_template('page.html', content=content, audio_file=True, audio_path=audio_url)
+    return render_template('page.html', content=content, audio_file=True, audio_path=audio_url, timestamp=datetime.now().timestamp())
 
 if __name__ == '__main__':
     app.run(debug=True)

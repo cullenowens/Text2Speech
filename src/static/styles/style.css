@@ -101,4 +101,5 @@ input[type="file"] {
   max-height: 300px;
   overflow-y: auto;
   width: 80%;
+  margin: 20px auto;
 }
